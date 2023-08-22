@@ -1,0 +1,264 @@
+\documentclass[aspectratio=169]{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+    \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+    \usecolortheme{default} % or try albatross, beaver, crane, ...
+    \usefonttheme{default}  % or try serif, structurebold, ...
+    \setbeamertemplate{navigation symbols}{}
+    \setbeamertemplate{caption}[numbered]
+}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{bbm}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\newenvironment{transitionframe}{
+    \setbeamercolor{background canvas}{bg=white}
+    \begin{frame}}{
+    \end{frame}
+}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage[style=authoryear, backend=biber]{biblatex}
+\bibliography{bib.bib}
+
+\title{Immigration and job rationing}
+\subtitle{}
+\author{Churn Ken Lee}
+\institute{UC San Diego}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+    \frametitle{}
+
+    \titlepage
+
+\end{frame}
+
+\begin{frame}{Motivation}
+    \begin{wideitemize}
+        \item Widespread popular perception that immigrants ``steal'' jobs from natives
+        \item Evidence of negative employment effects from natural experiments:
+        \begin{wideitemize}
+            \item \textcite{hunt_ILRReview_1992_algerian_repatriates_french_labor_market}: French repatriation from Algeria
+            \item \textcite{angrist_kugler_EJ_2003_yugoslovia_immigration}: EU immigration from breakup of Yugoslavia
+            \item \textcite{glits_JOLE_2012_soviet_german_immigrants_allocation_rule}: Migration of ethnic Germans after breakup of Soviet Union
+            \item \textcite{card_ILRReview_1990_mariel_boatlift}: Mariel boatlift
+        \end{wideitemize}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Question}
+    Are employment effects of immigration stronger in slack compared to tight labor markets?
+\end{frame}
+
+\begin{frame}{What I do}
+    \begin{wideitemize}
+        \item Construct immigration instrument to US states, borrowing method from \textcite{burchardi_chaney_hassan_tarquinio_terry_NBERWP_2020_immigration_innovation}
+        \item Use this instrument to investigate the response of employment rate to immigration
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Ideal experiment}
+    \begin{equation*}
+        \frac{\Delta l_d^t}{l_d^t} = \delta_t + \beta \cdot \frac{\text{Immigration}_d^t}{\text{Labor force}_d^t} + \epsilon_d^t
+    \end{equation*}
+    \begin{wideitemize}
+        \item $\frac{\Delta l_d^t}{l_d^t}$: Percent change in the employment rate
+        \item $\frac{\text{Immigration}_d^t}{\text{Labor force}_d^t}$: Change in the labor force
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Immigration instrument}
+    \begin{wideitemize}
+        \item Borrow method from \textcite{burchardi_chaney_hassan_tarquinio_terry_NBERWP_2020_immigration_innovation}
+        \item Immigrants want to move to where people from the same country of origin live
+        \item Instrument for immigrant flows to a given location using predicted (existing) ancestry
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Predicted ancestry}
+    \begin{equation*}
+        A_{o, d, t} = \delta_{o, r(d), t} + \delta_{c(o), d, t} + X_{o, d}^{\prime} \zeta+\sum_{\tau=1880}^t a_{r(d), \tau} \cdot I_{o,-r(d), \tau} \cdot \frac{I_{E u r o p e, d, \tau}}{I_{E u r o p e, \tau}} + v_{o, d, t}
+    \end{equation*}
+    \begin{wideitemize}
+        \item $A_{o, d, t}$: non-European ancestry today in a given state
+        \item $\frac{I_{E u r o p e, d, \tau}}{I_{E u r o p e, \tau}}$: historical European immigration distribution
+        \item $I_{o,-r(d), \tau}$: historical non-European immigration outside of the region of the state
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Predicted immigration}
+    \begin{equation*}
+        I_{o, d, t} = \delta_{o, r(d)} + \delta_{c(o), d} + \delta_t+X_{o, d}^{\prime} \theta + b_t \cdot \left[\hat{A}_{o, d, t-1} \times \tilde{I}_{o,-r(d), t}\right] + u_{o, d, t}
+    \end{equation*}
+    \begin{wideitemize}
+        \item $\hat{A}_{o, d, t-1}$: predicted ancestry
+        \item $\tilde{I}_{o,-r(d), t} = I_{o,-r(d), t} \cdot \frac{I_{\text {Europe }, r(d), t}}{I_{\text {Europe },-r(d), t}} $: scaled push factor (immigration today)
+        \item Sum across origins to get our immigration instrument:
+        \begin{equation*}
+            \hat{I}_{d, t} = \sum_o \hat{b}_t \cdot\left[\hat{A}_{o, d, t-1} \times \tilde{I}_{o,-r(d), t}\right]
+        \end{equation*}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Data}
+    \begin{wideitemize}
+        \item Vacancies at the state level: BLS-JOLTS (2000-2023)
+        \item Unemployment at the state level: BLS-LAUS (2000-2023)
+        \item Ancestry and immigration:
+        \begin{wideitemize}
+            \item Census IPUMS-USA (1880-1960)
+            \item ACS IPUMS-USA (2005-2021)
+        \end{wideitemize}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Results}
+\centering
+    \begin{tabular}{lccc} \hline
+     & (1) & (2) & (3) \\
+    VARIABLES & All & Tight & Slack \\ \hline
+     &  &  &  \\
+    H\_growth & -0.00244 & -0.0110* & -0.00122 \\
+     & (0.00491) & (0.00598) & (0.00790) \\
+     &  &  &  \\
+    Observations & 714 & 331 & 383 \\
+     R-squared & 0.813 & 0.347 & 0.853 \\ \hline
+    \multicolumn{4}{c}{ Standard errors in parentheses} \\
+    \multicolumn{4}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Model}
+    \begin{wideitemize}
+        \item Simplified version of the search-and-matching model in \textcite{michaillat_AER_2012_rationing_unemployment_bad_times}:
+        \begin{wideitemize}
+            \item declining MPL + wage rigidity $\Rightarrow$ job rationing
+        \end{wideitemize}
+        \item My exposition here has
+        \begin{wideitemize}
+            \item Fixed wages
+            \item Variable population size
+        \end{wideitemize}
+        \item Key takeaway:
+        \begin{wideitemize}
+            \item Employment rate falls when population increases
+            \item Elasticity of this response is larger when labor markets are slack
+        \end{wideitemize}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Matching function}
+    \begin{equation*}
+        m(U,V) = \mu \cdot U^\eta \cdot V^{1-\eta}
+    \end{equation*}
+    \begin{wideitemize}
+        \item Tightness: $\theta = \frac{V}{U}$
+        \item Job finding rate: 
+        \begin{equation*}
+            f(\theta) = \frac{m(U,V)}{U} = \mu \cdot \theta^{1-\eta}
+        \end{equation*}
+        \item Vacancy filling rate:
+        \begin{equation*}
+            q(\theta) = \frac{m(U,V)}{V} = \mu \cdot \theta^{-\eta}
+        \end{equation*}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Labor supply}
+    \begin{wideitemize}
+        \item Labor force $H$ = employed $L$ + unemployed $U$
+        \item Exogenous separation rate $s$
+        \item LOM:
+        \begin{equation*}
+            \dot L(t) = f(\theta) \cdot U(t) - s \cdot L(t)
+        \end{equation*}
+        \item Balanced flows $\dot L(t) = 0$:
+        \begin{equation*}
+            L^{s}(\theta, H) = \frac{f(\theta)}{s + f(\theta)} \cdot H
+        \end{equation*}
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Firms}
+    \begin{wideitemize}
+        \item Firms maximize profits
+            \begin{equation*}
+                a N^\alpha - w L
+            \end{equation*}
+        \item Firms hire $q(\theta)V$ workers by posting vacancies $V$
+        \item Each vacancy requires $r$ recruiters
+        \item $L = rV + N$
+        \item Matches separate at rate $s$
+        \item $\alpha < 1$: declining MPL
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Labor demand}
+    \begin{wideitemize}
+        \item The firm's solution to its FOC is
+        \begin{equation*}
+            L^d(\theta, a) = \left[ \frac{a \alpha}{w [1 + \tau(\theta)]^\alpha} \right]^{\frac{1}{1-\alpha}}
+        \end{equation*}
+        \item $\tau(\theta) = \frac{rV}{N} = \frac{rs}{q(\theta) - rs}$ is the recruiter-producer ratio
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Solution}
+    \centering
+    \includegraphics[width=0.5\textwidth]{eqm.png}
+    \begin{wideitemize}
+        \item $\epsilon^s_\theta = u(\theta) \cdot (1 - \eta)$
+        \item $\epsilon^d_\theta = \frac{-\alpha}{1-\alpha} \eta \tau(\theta)$
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Immigration}
+    \centering
+    \includegraphics[width=0.5\textwidth]{immig.png}
+    \begin{wideitemize}
+        \item $\epsilon^\theta_H = \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta} < 0$
+        \item $\epsilon^f_H = (1-\eta) \cdot \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta} < 0$
+        \item $\epsilon^u_H = \frac{1 - u(\theta)}{u(\theta)} \cdot \frac{\epsilon^s_\theta}{\epsilon^s_\theta - \epsilon^d_\theta} > 0$
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Tight vs slack labor market}
+    \begin{wideitemize}
+        \item Elasticity of employment w.r.t. $H$:
+        \begin{align*}
+            \epsilon^l_H = \frac{-1}{1 + \frac{\alpha}{1-\alpha} \cdot \frac{\eta}{1-\eta} \cdot \frac{\tau(\theta)}{u(\theta)}}
+        \end{align*}
+        \item As $\theta$ falls, $\tau(\theta)$ falls and $u(\theta)$ increases, so $\epsilon^l_H$ decreases
+        \item i.e., employment rate falls more in response to an increase in $H$
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Tightening}
+    \centering
+    \includegraphics[width=0.5\textwidth]{tightening.png}
+    \begin{wideitemize}
+        \item $\frac{w}{a}$ falls $\Rightarrow$ $\theta$ rises as $L^d$ shifts right
+        \item Driven here purely by productivity shocks
+    \end{wideitemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Bibliography}
+    \printbibliography
+\end{frame}
+
+\end{document}

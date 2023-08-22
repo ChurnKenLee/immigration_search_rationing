@@ -1,0 +1,374 @@
+\documentclass[12pt]{article}
+\usepackage[usenames,dvips]{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{placeins,float,setspace,amsfonts,comment,amsmath,amssymb,amsxtra,graphicx,ifthen,pstricks-add,ushort,enumerate,mathrsfs,hyperref,textcomp,bbm,pdflscape, threeparttable,footmisc}
+\usepackage{subcaption}
+\usepackage{authblk}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true, anchorcolor= webbrown, citecolor= webbrown, filecolor= webbrown, linkcolor=webbrown, menucolor= webbrown, urlcolor= webbrown, citebordercolor= 1 0 0, menubordercolor=1 0 0, urlbordercolor=1 0 0, runbordercolor=1 0 0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+
+\usepackage[style=authoryear, backend=biber]{biblatex}
+\bibliography{bib.bib}
+
+\title{\Large \textbf{\ttitle}\thanks{\tthanks}}
+\begin{document}
+
+	\author{Churn Ken Lee\footnote{Email: \href{mailto:ckl055@ucsd.edu}{ckl055@ucsd.edu}. Address: 9500 Gilman Dr \#0519, La Jolla, California 92093-0519.}}
+	\affil{\small University of California San Diego}
+	\date{\small April 2023}
+	
+	\newcommand\ttitle{Immigration and job displacement}
+	\newcommand\tthanks{Thank you to Pascal Michaillat and Munseob Lee for their guidance throughout this project.}
+	\maketitle
+	
+	\begin{abstract}
+		\vspace{1mm}
+		\noindent  Abstract here.
+		\\ \\
+		Keywords: \\
+		JEL Codes: 
+	\end{abstract}
+	
+	\thispagestyle{empty} \newpage \setcounter{page}{1}
+	
+	\onehalfspace
+	\renewcommand{\thetable}{\Roman{table}}
+
+\section{Introduction}
+The notion that immigrants ``steal'' jobs from natives is a common refrain among immigration opponents.
+Standard neoclassical models of the labor market do not have unemployment, so they are unsuitable for studying job displacement effects of immigration.
+Papers using search-and-matching models have immigrants and natives interacting with each other via changes in the vacancy posting (job creation) effect, and vacancy creation is perfectly elastic.
+Job creations effect is stronger when immigrants increase vacancy filling rates by more, and this benefits natives by increasing the latter's job finding rates.
+In models with wage bargaining, wages fall.
+To study how immigration impacts employment of natives over the short (and long) run, we need to bring in some sort of friction on the vacancy creation side of the model, i.e., some sort of job rationing mechanism whereby employers' vacancy creation is not fully elastic.
+This captures the popular notion that immigrants ``steal'' jobs from natives.
+This rationing effect can be motivated via different sources, e.g., higher savings of recent immigrants, slack vs tight labor markets over the business cycle, heterogeneity in labor market tightness over geography.
+
+\section{Empirical evidence on job displacement}
+Few historical examples of large scale immigration.
+
+\begin{itemize}
+    \item \textcite{hunt_ILRReview_1992_algerian_repatriates_french_labor_market}
+    \begin{itemize}
+        \item Repatriation of French Algerians in the wake of Algerian indepence
+        \item 1.6\% of the French labor market, increased unemployment of non-repatriates by 0.3\%
+        \item Possible negative wage effects of 1.3\%
+        \item No IV strategy? Earlier repatriates, temperature, government incentives
+    \end{itemize}
+    \item \textcite{angrist_kugler_EJ_2003_yugoslovia_immigration}
+    \begin{itemize}
+        \item Emigration into the EU from breakup of Yugoslavia and Balkan Wars
+        \item OLS: 100 immigrants $\Rightarrow$ cost 35 native jobs
+        \item IV (distance from Yugoslavia): 100 immigrants $\Rightarrow$ cost 83 native jobs
+    \end{itemize}
+    \item \textcite{glits_JOLE_2012_soviet_german_immigrants_allocation_rule}
+    \begin{itemize}
+        \item Ethnic Germans from former Soviet countries were allowed to migrate to Germany
+        \item Settlement locations determined by government to ensure even distribution throughout Germany, prioritizing proximity to existing family
+        \item Skill-level, local labor market conditions irrelevant
+        \item 10 employed immigrants $\Rightarrow$ 3.1 unemployed natives
+    \end{itemize}
+    \item \textcite{card_ILRReview_1990_mariel_boatlift}
+    \begin{itemize}
+        \item Effect of Cuban migrants from Mariel boatlift on Miami labor market
+        \item No effect on wages or employment of non-Cubans
+        \item No effect on wages of other Cubans
+        \item Cuban unemployment rates higher by 3 percentage points than expected based on pre and post patterns
+        \item Equivalent to about 20\% unemployment rate among Mariel arrivals
+    \end{itemize}
+\end{itemize}
+
+\section{Neoclassical approach }
+
+\section{Related papers using search-and-matching to study immigration and labor markets}
+
+\begin{itemize}
+    \item \textcite{liu_JEDC_2000_illegal_immigration_search_welfare}
+    \begin{itemize}
+        \item Immigrants cannot save and employers are subject to potential fines if hiring immigrants
+        \item Difference in terms of savings and wages w.r.t. natives
+        \item Positive consumption effect (exploitation), negative employment and wage effects (tightness falls), negative capital intensity effect (savings)
+    \end{itemize}
+    \item \textcite{ortega_EJ_2000_two_country_migration_search_multiple_equilibria}
+    \begin{itemize}
+        \item Model of two countries with migration and differences in structural parameters
+        \item Possile equilibrium whereby emigration driven by better foreign job finding rates, while lower tightness and higher vacancy filling rates drive higher job entry in foreign
+        \item Natives benefit via higher job finding rates
+    \end{itemize}
+    \item \textcite{chassamboulli_palivos_JoMacro_2013_impact_immigration_employment_wages}
+    \begin{itemize}
+        \item Migration into Greece 2000-2007
+        \item Heterogeneity in skills and unemployment income (search costs)
+        \item Skilled natives gain due to complementarity, unskilled natives ambiguous
+    \end{itemize}
+    \item \textcite{chassamboulli_palivos_IER_2014_us_skill_biased_immigration_search}
+    \begin{itemize}
+        \item Skilled-bias immigration to the US 2000-2009
+        \item Positive employment effects for both skilled and unskilled natives
+        \item Higher wages for unskilled natives, lower wages for skilled natives
+        \item This is due to higher job entry + wage bargaining
+    \end{itemize}
+    \item \textcite{chassamboulli_peri_RED_2015_illegal_immigration_labor_markets}
+    \begin{itemize}
+        \item Two-country model (US and Mexico) with search in labor markets
+        \item Immigration enforcement reduces job creation and increases native unemployment due to lower vacancy filling rates
+    \end{itemize}
+    \item \textcite{battisti_felbermayr_peri_poutvaara_JEEA_2017_immigration_search_redistribution}
+    \begin{itemize}
+        \item GE model with 2 skill types, search frictions, wage bargaining, and redistribution
+        \item Immigration reduces effect of search frictions
+        \item In 2/3 countries, both high and low skilled natives benefit (due to search frictions + redistribution)
+    \end{itemize}
+    \item \textcite{hart_clemens_WP_2019_eu_business_cycle_migration_search}
+    \begin{itemize}
+        \item Two-country DSGE model of migration and search frictions
+        \item Immigration shock leads to lower real wages, lower unemployment rate after 6 months
+        \item Full absorption of additional workers
+    \end{itemize}
+    \item \textcite{chassamboulli_peri_JEDC_2020_immigration_policies_US_simulation}
+    \begin{itemize}
+        \item High and low skilled
+        \item 3 channels for migration: family-based, employment-based, and undocumented
+        \item Strong job creation effects for both high-skilled and low-skilled immigrants due to larger firm surplus compared to natives
+    \end{itemize}
+    \item \textcite{albert_AEJMacro_2021_immigration_job_creation_vs_competition}
+    \begin{itemize}
+        \item Search model with nonrandom hiring (lower wages for immigrants)
+        \item Heterogeneity in search intensity between immigrants and natives, and between documented and undocumented immigrants
+        \item Job creation effects dominate wage effects for undocumented workers, but not for documented workers
+    \end{itemize}
+\end{itemize}
+
+\section{Data}
+
+\subsection{Vacancies and unemployment}
+\begin{itemize}
+    \item Vacancies at the state level: BLS-JOLTS, 2000-2023
+    \item Unemployment at the state level: BLS-LAUS, 2000-2023
+\end{itemize}
+
+\subsection{Immigration shocks}
+Obtained from \textcite{burchardi_chaney_hassan_tarquinio_terry_NBERWP_2020_immigration_innovation}.
+
+\section{Model of the labor market}
+We have firms with mass 1 and labor force with mass $H$.
+Model is a simplified version of the labor market in \textcite{michaillat_AER_2012_rationing_unemployment_bad_times}, with frictional unemployment in good times and both frictional and rationing unemployment in bad times.
+
+\subsection{Matching function}
+We use a standard Cobb-Douglas matching function
+\begin{equation}
+    m(U,V) = \mu \cdot U^\eta \cdot V^{1-\eta}
+\end{equation}
+where $\mu$ is the matching efficiency, and $\eta$ is the matching elasticity w.r.t. unemployed $U$, $V$ is vacancies.
+Wages $w$ are common across all workers and are fixed. We can appeal to \textcite{ottaviano_peri_JEEA_2012_immigration_no_effect_on_wages} which shows little to no effect of immigration on wages of natives.
+Of course they also show large negative effect on wages of previous immigrants.
+There is also \textcite{albert_AEJMacro_2021_immigration_job_creation_vs_competition} that show a small wage gap (and search effort) between immigrants and natives due to differences in outside options.
+
+Tightness is $\theta = \frac{V}{U}$. The job finding rate is
+\begin{equation}
+    f(\theta) = \frac{m(U,V)}{U} = \mu \cdot U^{\eta - 1} \cdot V^{1-\eta} = \mu \cdot \theta^{1-\eta}
+\end{equation}
+while the vacancy filling rate is
+\begin{equation}
+    q(\theta) = \frac{m(U,V)}{V} = \mu \cdot \theta^{-\eta}.
+\end{equation}
+
+The elasticity of the job finding rate w.r.t. $\theta$ is $\frac{d \ln f(\theta)}{d \ln \theta} = 1 - \eta = \epsilon^f_\theta$, while the elasticity of the vacancy filling rate w.r.t. $\theta$ is $\frac{d \ln q(\theta)}{d \ln \theta} = - \eta = \epsilon^q_\theta$.
+
+\subsection{Producers}
+Firms produce using a production function
+\begin{equation}
+    y(N) = a \cdot N^\alpha
+\end{equation}
+where $a$ is labor productivity, $\alpha \in (0, 1)$ generates diminishing marginal returns to labor. The concavity in conjunction with fixed wages is what generates rationing in bad times, i.e., a negative shock to $a$.
+
+Firms require $r$ recruiters to post a vacancy, so they have total recruiters $R=rV$ to post $V$ vacancies.
+Total employment is $L = R + N$.
+Matches separate at the rate $s$ each period.
+
+\subsection{Total employment}
+$L$ evolves according to the law of motion
+\begin{equation} \label{eq:lom_L}
+    \dot L(t) = f(\theta) \cdot U(t) - s \cdot L(t).
+\end{equation}
+Since $H = U + L \Rightarrow U = H - L$, we have
+\begin{equation}
+    \dot L(t) = f(\theta) \cdot (H - L(t)) - s \cdot L(t) = f(\theta) \cdot H - L(t) \cdot (f(\theta) + s).
+\end{equation}
+In a labor market with balanced flows, $\dot L(t) = 0$, and labor supply is thus
+\begin{equation} \label{eq:ss_L}
+    L^{s}(\theta, H) = \frac{f(\theta)}{s + f(\theta)} \cdot H.
+\end{equation}
+We can appeal to ... for the equivalence of \ref{eq:lom_L} and \ref{eq:ss_L}, i.e., labor market flows are balanced.
+
+Given $U = H - L$, the unemployment rate is
+\begin{equation}
+    u(\theta) = \frac{U}{H} = \frac{H - L}{H} = 1 - \frac{L}{H} = \frac{s}{s + f(\theta)}.
+\end{equation}
+
+The elasticity of labor supply $L^s$ w.r.t. $\theta$ is
+\begin{align*}
+    \epsilon^s_\theta = \frac{d \ln L(\theta, H)}{d \ln \theta} &= \frac{d (\ln f(\theta) - \ln (s + f(\theta))}{d \ln \theta} \\
+    &= \epsilon^f_\theta - \frac{1}{s + f(\theta)} \cdot f(\theta) \cdot \epsilon^f_\theta \\
+    &= \epsilon^f_\theta \left( 1 - \frac{f(\theta)}{s + f(\theta)} \right) \\
+    &= \epsilon^f_\theta \cdot \frac{s}{s + f(\theta)} \\
+    &= u(\theta) \cdot (1 - \eta).
+\end{align*}
+
+Using $u(\theta) = 1 - \frac{L}{H}$, the elasticity of the unemployment rate $u(\theta)$ w.r.t. $\theta$ is
+\begin{align*}
+    \epsilon^u_\theta &= \frac{d \ln u(\theta)}{d \ln \theta} \\
+    &= \frac{1}{1 - L/H} \left( -\frac{L}{H} \right) \epsilon^s_\theta \\
+    &= -\frac{1 - u(\theta)}{u(\theta)} \cdot \epsilon^s_\theta \\
+    &= -[1-u(\theta)] (1-\eta)
+\end{align*}
+
+\subsection{Recruiter-producer ratio}
+Firms devote a portion of its labor force to recruiting for posted vacancies in order to fill positions left empty by random separations, each vacancy requiring $r$ recruiters.
+In order to maintain a fixed size, the firm fills $q(\theta)V$ positions equal to $sL$ separations.
+We can then derive the recruiter-producer ratio $\tau(\theta) = R/N$ as
+\begin{align*}
+    q(\theta)V &= sL \\
+    q(\theta)rV &= rsL \\
+    q(\theta)R &= rs(R+N) \\
+    q(\theta) &= rs \left( 1+\frac{N}{R} \right) \\
+    q(\theta) &= rs \left( 1+\tau(\theta)^{-1} \right) \\
+    \frac{q(\theta)}{rs} - 1 &= \tau(\theta)^{-1} \\
+    \tau(\theta) &= \frac{rs}{q(\theta) - rs}.
+\end{align*}
+This function is defined on $[0, \theta_\tau)$, where $\theta_\tau$ is defined as $q(\theta_\tau) = rs$.
+The wedge between total employment and producers is $1 + \tau(\theta)$:
+\begin{align*}
+    L &= R + N \\
+    &= N \left( \frac{R}{N} + 1 \right) \\
+    &= N [1 + \tau(\theta)] \\
+\end{align*}
+
+The elasticity of $1 + \tau(\theta)$ w.r.t. $\theta$ is
+\begin{align*}
+    \epsilon^{1+\tau}_\theta &= \frac{d}{d \ln \theta} \ln \left( \frac{q(\theta)}{q(\theta) - rs} \right) \\
+    &= \frac{d \ln q(\theta)}{d \ln \theta} - \frac{d \ln (q(\theta) - rs)}{d \ln \theta} \\
+    &= \epsilon^q_\theta - \frac{1}{q(\theta) - rs} \cdot q(\theta) \cdot \frac{d \ln q(\theta)}{d \ln \theta} \\
+    &= \epsilon^q_\theta \left( 1 - \frac{q(\theta)}{q(\theta) - rs} \right) \\
+    &= \epsilon^q_\theta \cdot \frac{-rs}{q(\theta) - rs} \\
+    &= \eta \tau(\theta)
+\end{align*}
+
+\subsection{Labor demand}
+Firms choose an optimal level of employment, and receive profits
+\begin{equation}
+    y(N) - wL = a N^\alpha - w \cdot (1+\tau(\theta)) \cdot N
+\end{equation}
+
+The firm's labor demand from solving its FOC is
+\begin{equation}
+    L^d(\theta, a) = \left[ \frac{a \alpha}{w [1 + \tau(\theta)]^\alpha} \right]^{\frac{1}{1-\alpha}}
+\end{equation}
+Labor demand decreases with tightness $\theta$, and tracks productivity $a$.
+The elasticity of labor demand w.r.t. $\theta$ is
+\begin{align*}
+    \epsilon^d_\theta &= \frac{d \ln L^d(\theta, a)}{d \ln \theta} \\
+    &= \frac{d}{d \ln \theta} \ln \left[ \frac{a \alpha}{w [1 + \tau(\theta)]^\alpha} \right]^{\frac{1}{1-\alpha}} \\
+    &= \frac{d}{d \ln \theta} \left[ \frac{1}{1-\alpha} \ln \left( \frac{a \alpha}{w [1 + \tau(\theta)]^\alpha} \right) \right] \\
+    &= \frac{-1}{1-\alpha} \cdot \frac{d}{d \ln \theta} \ln \left( 1 + \tau(\theta) \right)^\alpha \\
+    &= \frac{-\alpha}{1-\alpha} \cdot \frac{d}{d \ln \theta} \ln \left(1 + \tau(\theta) \right) \\
+    &= \frac{-\alpha}{1-\alpha} \epsilon^{1+\tau}_\theta \\&= \frac{-\alpha}{1-\alpha} \eta \tau(\theta)
+\end{align*}
+
+\subsection{Solution of the model}
+In equilibrium of our labor market, firms maximize profits and total employment is determined by the search-and-matching process.
+This requires that labor demand equals labor supply:
+\begin{equation} \label{eq:equilibrium_condition}
+    L^d(\theta, a) = L^s(\theta, H).
+\end{equation}
+This defines the equilibrium level of tightness: $\theta(H)$.
+Equilibrium tightness changes with $H$.
+
+\section{Immigration in our model}
+Immigration is modeled as an increase in the labor force, $H$.
+Here labor demand does not adjust in response to immigration, ruling out effects such as capital adjustment \parencite{lewis_QJE_2011_immigration_less_automation, peri_REStat_2012_immigration_unskilled_intensive_technology}, innovation \parencite{keri_NBERWP_2013_high_skilled_immigration_review, burchardi_chaney_hassan_tarquinio_terry_NBERWP_2020_immigration_innovation}, or agglomeration.
+
+Taking the total derivative of both sides of our equilibrium condition \ref{eq:equilibrium_condition} yields
+\begin{align*}
+    \epsilon^d_\theta \cdot d \ln \theta &= \epsilon^s_\theta \cdot d \ln \theta + \epsilon^s_H \cdot d \ln H \\
+    (\epsilon^d_\theta - \epsilon^s_\theta) \cdot d \ln \theta &= \epsilon^s_H \cdot d \ln H \\
+    \epsilon^\theta_H = \frac{d \ln \theta}{d \ln H} &= \frac{\epsilon^s_H}{\epsilon^d_\theta - \epsilon^s_\theta} \\
+    &= \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta}
+\end{align*}
+where we know $\epsilon^s_H = 1$ for the last step.
+
+Using the chain rule, we obtain the elasticity of the job finding rate $f$ w.r.t. $H$,
+\begin{align*}
+    \epsilon^f_H &= \frac{d \ln f(\theta(H))}{d \ln H} \\
+    &= \epsilon^f_\theta \cdot \epsilon^\theta_H \\
+    &= (1-\eta) \cdot \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta}.
+\end{align*}
+
+Similarly, the elasticity of the unemployment rate $u$ w.r.t. $H$ is
+\begin{align*}
+    \epsilon^u_H &= \epsilon^u_\theta \cdot \epsilon^\theta_H \\
+    &= -\frac{1 - u(\theta)}{u(\theta)} \cdot \epsilon^s_\theta \cdot \frac{1}{\epsilon^d_\theta - \epsilon^s_\theta} \\
+    &= \frac{1 - u(\theta)}{u(\theta)} \cdot \frac{\epsilon^s_\theta}{\epsilon^s_\theta - \epsilon^d_\theta}
+\end{align*}
+and the semi-elasticity of the unemployment rate $u$ w.r.t. $H$ is
+\begin{align*}
+    \frac{d u}{d \ln H} &= \frac{d u}{d \ln u} \cdot \frac{d \ln u}{d \ln H} \\
+    &= \frac{d \exp(\ln u)}{d \ln u} \cdot \epsilon^u_H \\
+    &= \exp(\ln u) \cdot \frac{1 - u(\theta)}{u(\theta)} \cdot \frac{\epsilon^s_\theta}{\epsilon^s_\theta - \epsilon^d_\theta} \\
+    &= (1 - u(\theta)) \cdot \frac{1}{1 - \frac{\epsilon^d_\theta}{\epsilon^s_\theta}}.
+\end{align*}
+
+Defining the employment rate as $l = L/H = 1 - u$, we have the elasticity of the employment rate w.r.t. $H$ as
+\begin{align*}
+    \epsilon^l_H = \frac{d \ln l}{d \ln H} &= \frac{d \ln (1-u)}{d \ln H} \\
+    &= \frac{1}{1 - u} \cdot \frac{- d u}{d \ln H} \\
+    &= \frac{- 1}{1 - \frac{\epsilon^d_\theta}{\epsilon^s_\theta}}.
+\end{align*}
+
+\section{Effect of immigration}
+Here are all of the elasticities:
+\begin{align*}
+    \epsilon^f_\theta &= 1 - \eta \\
+    \epsilon^q_\theta &= - \eta \\
+    \epsilon^s_\theta &= u(\theta) \cdot (1 - \eta) \\
+    \epsilon^u_\theta &= -[1-u(\theta)] (1-\eta) \\
+    \epsilon^{1+\tau}_\theta &= \eta \tau(\theta) \\
+    \epsilon^d_\theta &= \frac{-\alpha}{1-\alpha} \eta \tau(\theta) \\
+    \epsilon^\theta_H &= \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta} \\
+    \epsilon^f_H &= (1-\eta) \cdot \frac{-1}{\epsilon^s_\theta - \epsilon^d_\theta} \\
+    \epsilon^u_H &= \frac{1 - u(\theta)}{u(\theta)} \cdot \frac{\epsilon^s_\theta}{\epsilon^s_\theta - \epsilon^d_\theta} \\
+    \frac{d u}{d \ln H} &= (1 - u(\theta)) \cdot \frac{1}{1 - \frac{\epsilon^d_\theta}{\epsilon^s_\theta}} \\
+    \epsilon^l_H &= \frac{-1}{1 - \frac{\epsilon^d_\theta}{\epsilon^s_\theta}}.
+\end{align*}
+
+And relevant equations:
+\begin{align*}
+    f(\theta) &= \mu \cdot \theta^{1-\eta} \\
+    q(\theta) &= \mu \cdot \theta^{-\eta} \\
+    \tau(\theta) &= \frac{rs}{q(\theta) - rs} \\
+    u(\theta) &= \frac{s}{s + f(\theta)}
+\end{align*}
+
+Given $\epsilon^d_\theta < 0$ and $\epsilon^s_\theta > 0$, we have $\epsilon^\theta_H < 0$, $\epsilon^f_H < 0$, and $\epsilon^u_H > 0$, i.e., tightness and employment rate decreases with immigration, while unemployment rate increases with immigration.
+
+\section{Immigration over the business cycle}
+The benefit of incorporating job rationing is that we are able to capture the intuition that immigration has larger job displacement effects when the economy is ``bad'', i.e., a fall in productivity leading to a high $w/a$ ratio.
+This leads to an leftward shift of $L^d$, and hence lower $\theta$.
+
+Plugging in the expressions for the elasticities of demand and supply w.r.t. $\theta$ into the elasticity of employment w.r.t. $H$ yields
+\begin{align*}
+    \epsilon^l_H &= \frac{-1}{1 - \frac{\frac{-\alpha}{1-\alpha} \eta \tau(\theta)}{u(\theta) \cdot (1 - \eta)}} \\
+    &= \frac{-1}{1 + \frac{\alpha}{1-\alpha} \cdot \frac{\eta}{1-\eta} \cdot \frac{\tau(\theta)}{u(\theta)}}.
+\end{align*}
+$\epsilon^l_H$ takes values in $(-1, 0)$.
+As $\theta$ falls, $\tau(\theta)$ falls and $u(\theta)$ increases, so $\epsilon^l_H$ decreases, i.e., employment rate falls more in response to an increase in $H$.
+
+
+\section{Calibration}
+
+\printbibliography
+
+\end{document}
