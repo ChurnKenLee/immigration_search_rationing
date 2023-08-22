@@ -1,3 +1,15 @@
+## Folders to ignore
+cleandata/
+output/
+papers/
+pascal_lecture/
+pascal_material/
+rawdata/
+replication_materials/
+
+## Results files to ignore:
+*.png
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
